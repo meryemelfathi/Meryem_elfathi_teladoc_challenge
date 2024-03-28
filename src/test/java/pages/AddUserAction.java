@@ -1,62 +1,66 @@
 package pages;
 
+import constant.AddUserRepo;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class AddUserAction {
+public class AddUserAction extends AddUserRepo {
+
+    WebDriver driver;
 
     public AddUserAction(WebDriver driver){
+        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "/html/body/table/thead/tr[2]/td/button/i")
-    public WebElement addUser;
+    public void clickAddUserLink(){
+        addUser.click();
+    }
 
-    @FindBy(xpath = "/html/body/div[2]/div[2]/form/table/tbody/tr[1]/td[2]/input")
-    public WebElement firstName;
+    public void insertFirstName(String myFirstName){
+        firstName.sendKeys(myFirstName);
+    }
 
-    @FindBy(xpath = "/html/body/div[2]/div[2]/form/table/tbody/tr[2]/td[2]/input")
-    public WebElement lastName;
+    public void insertLastName(String myLastName){
+        lastName.sendKeys(myLastName);
+    }
 
-    @FindBy(xpath = "/html/body/div[2]/div[2]/form/table/tbody/tr[3]/td[2]/input")
-    public WebElement userName;
+    public void insertUserName(String myUserName){
+        userName.sendKeys(myUserName);
+    }
 
-    @FindBy(xpath = "/html/body/div[2]/div[2]/form/table/tbody/tr[4]/td[2]/input")
-    public WebElement password;
+    public void insertPassword(String myPassword){
+        password.sendKeys(myPassword);
+    }
 
-    @FindBy(xpath = "/html/body/div[2]/div[2]/form/table/tbody/tr[5]/td[2]/label[1]")
-    public WebElement customer;
+    public void selectCustomer(){
+        customer.click();
+    }
 
-    @FindBy(xpath = "/html/body/div[2]/div[2]/form/table/tbody/tr[6]/td[2]/select")
-    public WebElement role;
+    public void dropDown(){
+        dropDownBTN.click();
+    }
 
-    @FindBy(xpath = "/html/body/div[2]/div[2]/form/table/tbody/tr[7]/td[2]/input")
-    public WebElement email;
-    @FindBy(xpath = "/html/body/div[2]/div[2]/form/table/tbody/tr[8]/td[2]/input")
-    public WebElement cellPhone;
+    public void selectRole(){
+        salesTeam.click();
+    }
 
-    @FindBy(xpath = "/html/body/div[2]/div[3]/button[2]")
-    public WebElement saveBTN;
+    public void insertEmail(String myEmail){
+        email.sendKeys(myEmail);
+    }
 
-    @FindBy(xpath = "/html/body/div[2]/div[3]/button[1]")
-    public WebElement closeBTN;
+    public void insertPhoneNumber(String myPhoneNumber){
+        cellPhone.sendKeys(myPhoneNumber);
+    }
 
-    @FindBy(xpath = "//table/tbody/tr[last()]")
-    public WebElement newUser;
+    public void submitForm(){
+        saveBTN.click();
+    }
 
-    @FindBy(xpath = "/html/body/div[2]/div[2]/form/table/tbody/tr[6]/td[2]/select")
-    public WebElement dropDownBTN;
-
-    @FindBy(xpath = "/html/body/div[2]/div[2]/form/table/tbody/tr[6]/td[2]/select")
-    public WebElement salesTeam;
-
-    @FindBy(xpath = "/html/body/div[2]/div[2]/form/table/tbody/tr[6]/td[2]/select")
-    public WebElement customerRole;
-
-    @FindBy(xpath = "/html/body/div[2]/div[2]/form/table/tbody/tr[6]/td[2]/select")
-    public WebElement Admin;
-
+    public boolean newUserIsDisplayed(){
+        return newUser.isDisplayed();
+    }
 
 }

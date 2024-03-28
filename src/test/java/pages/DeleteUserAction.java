@@ -1,20 +1,29 @@
 package pages;
 
+import constant.DeleteUserRepo;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class DeleteUserAction {
+public class DeleteUserAction extends DeleteUserRepo {
+
+    WebDriver driver;
 
     public DeleteUserAction (WebDriver driver){
+        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "/html/body/table/tbody/tr[1]/td[11]/button/i")
-    public WebElement deleteUser;
+    public boolean dialogPopupIsDisplayed(){
+        return popup_header.isDisplayed();
+    }
 
-    @FindBy(xpath = "/html/body/div[2]/div[3]/button[2]")
-    public WebElement popup_okBtn;
+    public boolean userIsDisplayed(){
+        return deleteUser.isDisplayed();
+    }
+
+
+
 
 }
